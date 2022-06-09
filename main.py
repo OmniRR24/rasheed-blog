@@ -53,14 +53,14 @@ class BlogPost(db.Model):
 
 
 class Comment(db.Model):
-    __tablename__ = 'comments'
+    __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     author = relationship('User', back_populates="comments")
     post_id = db.Column(db.Integer, db.ForeignKey('blog_posts.id'))
     post = relationship('BlogPost', back_populates="comments")
     text = db.Column(db.String(1000))
-# db.create_all()
+db.create_all()
 
 
 @login_manager.user_loader
